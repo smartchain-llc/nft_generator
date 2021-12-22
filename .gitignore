@@ -1,4 +1,5 @@
-/assets/*
+/assets/base/*
+/assets/layers/*
 /lib/__pycache__
 /lib/utils/__pycache__
 /*.zip
