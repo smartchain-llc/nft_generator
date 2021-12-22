@@ -1,3 +1,5 @@
 /assets/*
 /lib/__pycache__
 /lib/utils/__pycache__
+/*.zip
+/bin/*
