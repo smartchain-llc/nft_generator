@@ -20,14 +20,11 @@ class Generator():
         return System.get_toplevel_layers()
 
     def parse_permutations(self):
-        nfts = []
         for nft_id in self.permutations:
             layers = []
             for i in range(len(self.indexes)):
                 layers.append(self.layers[self.categories[i]][self.permutations[nft_id][i]])
-            nfts.append(NFT(nft_id, layers, self.categories, self.generation_order))
-
-        return nfts
+            self.nfts.append(NFT(nft_id, layers, self.categories, self.generation_order))
 
     def run(self):
         for i in range(len(self.categories)):
