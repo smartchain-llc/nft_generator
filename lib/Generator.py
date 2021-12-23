@@ -31,7 +31,8 @@ class Generator():
             self.generation_order.append(Menu.select_generation_order(self.generation_order))
         self.generation_order = Menu.select_base_index(self.generation_order)
 
-        self.nfts = self.parse_permutations()
+        self.parse_permutations()
+
 
     def make_NFT(permutation):
         print("Making NFT")
