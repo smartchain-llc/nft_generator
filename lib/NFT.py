@@ -1,6 +1,7 @@
 from typing_extensions import Concatenate
 from lib.utils.System import System
 import lib.constants as static
+import math
 from PIL import Image
 
 class NFT():
@@ -8,7 +9,7 @@ class NFT():
         self.layers = layers
         self.categories = categories
         self.layout = self.generate_layout(self.layers, self.categories)
-        self.rarity = 0
+        self.rarity = self.calculate_rarity_from_layout()
         self.base = "Bird.png"
         self.id = id
         self.dna = ""
@@ -24,6 +25,12 @@ class NFT():
             layer += 1
         
         return ret
+
+    def calculate_rarity_from_layout(self):
+        rarity = 0
+        for category in self.layout:
+            rarity += System.get_rarity_from_file(self.layout[category])
+        return math.floor(rarity / 5)
 
     def generate_image(self):
         

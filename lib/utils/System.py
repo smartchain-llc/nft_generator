@@ -1,5 +1,6 @@
 import os
 import lib.constants as static
+import math
 # Class that holds utiliy functions related to the operatin systems and files
 class System:
     def count_layers_l():
@@ -33,3 +34,6 @@ class System:
         files = os.listdir(static.BASE_IMG_DIR)
         if filename in files:
             return static.BASE_IMG_DIR + filename
+
+    def get_rarity_from_file(string):
+        return int(string[string.find('#') + 1])

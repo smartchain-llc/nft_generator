@@ -15,4 +15,4 @@ META_OUTPUT_DIR = OUTPUT_DIR + "metadata/"
 
 IGNORE = [".DS_Store", ".", ".."]
 
-RARITY = ["Common", "Uncommon", "Epic", "Rare", "Legendary", "Unique"]
+RARITY = ["Unique", "Common", "Uncommon", "Epic", "Rare", "Legendary"]
