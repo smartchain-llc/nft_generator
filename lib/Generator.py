@@ -36,7 +36,6 @@ class Generator():
             self.generation_order.append(Menu.select_generation_order(self.generation_order))
         self.generation_order = Menu.select_base_index(self.generation_order)
 
-        # self.parse_permutations()
 
 
     def make_NFT(permutation):
@@ -50,3 +49,12 @@ class Generator():
 
         return ret
 
+    def get_nfts_by_rarity(self):
+        ret = {}
+        for rarity in c.RARITY:
+            ret[rarity] = []
+
+        for nft in self.nfts:
+            ret[c.RARITY[nft.rarity]].append(nft)
+
+        return ret
