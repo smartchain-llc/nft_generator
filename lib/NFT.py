@@ -47,8 +47,9 @@ class NFT():
         self.metadata.name = static.COLLECTION_NAME + " #" + self.id
         self.metadata.description = "Think of something funny"
         self.metadata.symbol = static.SYMBOL
-        self.metadata.parse_layout(self.layout)
-        self.metadata.generate()
+        self.metadata.append_attribute(self.layout)
+        self.metadata.append_attribute({"rarity": self.rarity})
+        self.metadata.generate(self.id)
 
     def get_layer_uri(self, category, layer):
         return static.BASE_LAYERS_DIR + category + "/" + layer
