@@ -3,7 +3,7 @@ from lib.Generator import Generator
 G = Generator()
 
 G.parse_permutations()
-
+G.run()
 nfts_by_rarity = G.get_nfts_by_rarity()
 
 for nft in G.nfts:

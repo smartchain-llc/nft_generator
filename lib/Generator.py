@@ -28,26 +28,11 @@ class Generator():
             for i in range(len(self.indexes)):
                 layers.append(self.layers[self.categories[i]][self.permutations[nft_id][i]])
             self.nfts.append(NFT(nft_id, layers, self.categories, self.generation_order))
-        
-        self.run()
 
     def run(self):
         for i in range(len(self.categories)):
             self.generation_order.append(Menu.select_generation_order(self.generation_order))
         self.generation_order = Menu.select_base_index(self.generation_order)
-
-
-
-    def make_NFT(permutation):
-        print("Making NFT")
-
-    def get_nfts_by_rarity(self, rarity):
-        ret = []
-        for nft in self.nfts:
-            if c.RARITY[nft.rarity] == rarity:
-                ret.append(nft)
-
-        return ret
 
     def get_nfts_by_rarity(self):
         ret = {}

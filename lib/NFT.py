@@ -30,8 +30,8 @@ class NFT():
 
     def calculate_rarity_from_layout(self):
         rarity = 0
-        # for category in self.layout:
-        #     rarity += System.get_rarity_from_file(self.layout[category])
+        for category in self.layout:
+            rarity += System.get_rarity_from_file(self.layout[category])
         return math.floor(rarity / 5)
 
     def generate_image(self):
