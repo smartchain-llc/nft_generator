@@ -16,3 +16,6 @@ META_OUTPUT_DIR = OUTPUT_DIR + "metadata/"
 IGNORE = [".DS_Store", ".", ".."]
 
 RARITY = ["Unique", "Common", "Uncommon", "Epic", "Rare", "Legendary"]
+
+COLLECTION_NAME = "Birdbrains"
+SYMBOL = "BB"

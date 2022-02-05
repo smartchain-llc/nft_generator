@@ -1,4 +1,6 @@
-from typing_extensions import Concatenate
+
+from random import Random, random
+from lib.Metadata import Metadata
 from lib.utils.System import System
 import lib.constants as static
 import math
@@ -13,9 +15,9 @@ class NFT():
         self.base = "Bird.png"
         self.id = id
         self.dna = ""
-        self.meta_data = ""
         self.imgs = []
         self.generation_order = generation_order
+        self.metadata = Metadata()
 
     def generate_layout(self, layers, categories):
         ret = dict.fromkeys(categories)
@@ -28,8 +30,8 @@ class NFT():
 
     def calculate_rarity_from_layout(self):
         rarity = 0
-        for category in self.layout:
-            rarity += System.get_rarity_from_file(self.layout[category])
+        # for category in self.layout:
+        #     rarity += System.get_rarity_from_file(self.layout[category])
         return math.floor(rarity / 5)
 
     def generate_image(self):
@@ -40,6 +42,13 @@ class NFT():
         
         base_img.save(static.NFT_OUTPUT_DIR + self.id + ".png", "PNG")
         del self.imgs
+
+    def generate_metadata(self):
+        self.metadata.name = static.COLLECTION_NAME + " #" + self.id
+        self.metadata.description = "Think of something funny"
+        self.metadata.symbol = static.SYMBOL
+        self.metadata.parse_layout(self.layout)
+        self.metadata.generate()
 
     def get_layer_uri(self, category, layer):
         return static.BASE_LAYERS_DIR + category + "/" + layer
