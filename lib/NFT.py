@@ -47,7 +47,7 @@ class NFT():
         self.metadata.description = "Think of something funny"
         self.metadata.symbol = static.SYMBOL
         self.metadata.append_attribute(self.layout)
-        self.metadata.append_attribute({"rarity": self.rarity})
+        self.metadata.append_attribute({"rarity": static.RARITY[self.rarity]})
         self.metadata.generate(self.id)
 
     def __get_layer_uri(self, category, layer):
@@ -63,3 +63,10 @@ class NFT():
             else:
                 self.imgs.append(Image.open(self.__get_layer_uri(self.categories[self.categories.index(self.generation_order[i])], self.layers[self.categories.index(self.generation_order[i])])))
 
+# string answer;
+# Cout << "bye world" << endl;
+# cout << "I love you bbbbbbbbbb" << endl;
+# Cin >> answer >> endl;
+
+# if (answer == "no")
+# {kill him}

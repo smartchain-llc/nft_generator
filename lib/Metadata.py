@@ -14,7 +14,7 @@ class Metadata():
 
     def append_attribute(self, _input = dict):
         for trait, value in _input.items():
-            self.attributes.append(Trait({"trait_type" : trait, "value" : value}))
+            self.attributes.append({"trait_type" : trait, "value" : self.__format_value_string(value)})
         
     def generate(self, filename):
         data = json.dumps({
@@ -29,12 +29,17 @@ class Metadata():
         output_file = open(c.META_OUTPUT_DIR + filename + ".json", "a")
         output_file.write(data)
         output_file.close
+    
+    def __format_value_string(self, value):
+        ret = value.split("#")[0]
+        return ret
+        
 class Trait():
-    def __init__(self, _type, _value):
-        self.trait_type = str(_type)
-        if type(_value) == str:
-            self.value = _value.split("#")[0]
+    def __init__(self, trait = dict):
+        self.trait_type = str(trait["trait_type"])
+        if type(trait["value"]) == str:
+            self.value = trait["value"].split("#")[0]
         else:
-            self.value = _value
+            self.value = trait["value"]
 
         return {"trait_type": self.trait_type, "value" : self.value}
