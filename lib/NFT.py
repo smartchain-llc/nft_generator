@@ -62,11 +62,3 @@ class NFT():
                 self.imgs.append(Image.open(self.__get_base_uri()))
             else:
                 self.imgs.append(Image.open(self.__get_layer_uri(self.categories[self.categories.index(self.generation_order[i])], self.layers[self.categories.index(self.generation_order[i])])))
-
-# string answer;
-# Cout << "bye world" << endl;
-# cout << "I love you bbbbbbbbbb" << endl;
-# Cin >> answer >> endl;
-
-# if (answer == "no")
-# {kill him}
