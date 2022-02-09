@@ -47,11 +47,6 @@ class Generator():
         submitted = []
 
         for rarity in nfts_by_rarity:
-            # if rarity == c.RARITY[1]:
-            #     for nft in nfts_by_rarity[rarity]:
-            #         self.final_nfts.append(nft)
-
-            # elif rarity != c.RARITY[0]:
             if rarity != c.RARITY[0]:
                 total = int(input(f"Input how many {rarity} to generate ({len(nfts_by_rarity[rarity])}): "))
                 if total == 0 or total == len(nfts_by_rarity[rarity]):
@@ -99,5 +94,13 @@ class Generator():
                 _to = int((i + 1) * (nfts_per_segment - 1))
                 new_list.append(self.final_nfts[_from : _to])
                 segmented_nfts.append(new_list)
-                
+        
+        self.__reassign_numerical_ids(segmented_nfts)
         return segmented_nfts
+
+    def __reassign_numerical_ids(self, listsOfNfts):
+        id = 0
+        for _list in listsOfNfts:
+            for nft in _list:
+                nft.id = str(id)
+                id += 1

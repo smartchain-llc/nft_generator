@@ -4,7 +4,6 @@ from multiprocessing import Process
 
 def setup_processes(nft_groups = []):
     processes = []
-    nfts = []
     for i in range(0,thread_count):
         processes.append(Process(target = process_nfts, args=(nft_groups[i], )))
         
