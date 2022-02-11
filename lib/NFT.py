@@ -38,14 +38,30 @@ class NFT():
         base_img = self.imgs[0]
         for layer in self.imgs[1:]:
             base_img.paste(layer, (0,0), layer)
-        
-        base_img.save(static.NFT_OUTPUT_DIR + self.id + ".png", "PNG")
+        filename = static.NFT_OUTPUT_DIR + self.id + ".png"
+        base_img.save(filename, "PNG")
+        self.__tag_img(filename)
         del self.imgs
+
+    def __tag_img(self, filename):
+        img = open(filename, "rb+")
+        fileData = img.read()
+        data = []
+        for char in fileData:
+            data.append(char)
+        for char in static.TAG:
+            data.append(char)
+        img.seek(0)
+        img.write(bytes(data))
+        img.close()
+        del(data)
+        del(img)
 
     def generate_metadata(self):
         self.metadata.name = static.COLLECTION_NAME + " #" + self.id
         self.metadata.description = "Think of something funny"
         self.metadata.symbol = static.SYMBOL
+        self.metadata.image = self.id + ".png"
         self.metadata.append_attribute(self.layout)
         self.metadata.append_attribute({"rarity": static.RARITY[self.rarity]})
         self.metadata.generate(self.id)

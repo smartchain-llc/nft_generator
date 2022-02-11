@@ -1,4 +1,5 @@
 from concurrent.futures import process
+from subprocess import list2cmdline
 from lib.utils.System import System
 from lib.NFT import NFT
 from lib.utils.Layers import Layers
@@ -76,24 +77,14 @@ class Generator():
 
         return ret
 
-    def split_nfts_for_processes(self, processor_count = 1):
+    def split_nfts_for_processes(self, processor_count = 2):
         total_nfts = len(self.final_nfts)
-        nfts_per_segment = total_nfts / processor_count
         segmented_nfts = []
 
-        if total_nfts % processor_count != 0:
-            for j in range(0, processor_count):
-                new_list = []
-                for i in range(0, total_nfts - processor_count, processor_count):
-                    new_list.append(self.final_nfts[i + j])
-                segmented_nfts.append(new_list)
-        else:
-            for i in range(0, processor_count):
-                new_list = []
-                _from = int(i * nfts_per_segment)
-                _to = int((i + 1) * (nfts_per_segment - 1))
-                new_list.append(self.final_nfts[_from : _to])
-                segmented_nfts.append(new_list)
+        for i in range(0, processor_count):
+            segmented_nfts.append([])    
+        for i in range(0, total_nfts):
+            segmented_nfts[i % processor_count].append(self.final_nfts[i])
         
         self.__reassign_numerical_ids(segmented_nfts)
         return segmented_nfts

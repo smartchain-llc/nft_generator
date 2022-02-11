@@ -19,3 +19,6 @@ RARITY = ["Unique", "Common", "Uncommon", "Epic", "Rare", "Legendary"]
 
 COLLECTION_NAME = "Birdbrains"
 SYMBOL = "BB"
+
+IPFS_URI = "ipfs://QmVgGG6J77rmx5TG63Lz6xJUFG8BjbsR1wHtthNLRtxvgM"
+TAG = [83, 77, 65, 82, 84, 67, 72, 65, 73, 78, 44, 76, 76, 67]

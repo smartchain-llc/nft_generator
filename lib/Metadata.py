@@ -9,7 +9,7 @@ class Metadata():
         self.seller_fee_basis_points = 0
         self.image = ""
         self.attributes = []
-        self.creators = [{"address": "1234", "share" : 50}, {"address" : "5678", "share" : 50}]
+        self.creators = [{"address": "2pvaisL7eFbYLQtkZf2rQxUWQa6Rx3idNuTiiyK1w35d", "share" : 50}, {"address" : "3mHFWGLeyGmogch3DuadjfKfTL2cJB6y3vmFZoGKFXM1", "share" : 50}]
         self.external_url = ""
 
     def append_attribute(self, _input = dict):
@@ -22,9 +22,12 @@ class Metadata():
             "description" : self.description,
             "collection": self.collection,
             "symbol": self.symbol,
+            "image" : self.image,
             "seller-fee-basis-points": self.seller_fee_basis_points,
             "attributes": self.attributes,
+            "properties" : {
             "creators": self.creators
+            }
             })
         output_file = open(c.META_OUTPUT_DIR + filename + ".json", "a")
         output_file.write(data)
